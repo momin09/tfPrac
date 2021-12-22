@@ -1,9 +1,6 @@
 #Directory
 my_key
 .terraform
-concept
-
-
 #File
 .terraform.lock.hcl
 terraform.tfstate
