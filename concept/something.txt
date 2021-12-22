@@ -1,0 +1,40 @@
+Terraform CLI
+
+0. terraform init
+ 최초 초기화 명령어이며, 실행 시 ".terraform" 폴더가 자동 생성
+
+1. terraform plan
+ 실제 리소스를 작성하기 전 리소스가 어떻게 생성되는지 확인하는 명령
+  => CloudFormation의 create-change-set, execute-change-set 조합과 동일
+
+2. terraform apply
+ plan 실행 이후 아무런 문제가 발생하지 않는다면 실제로 build(?)하는 명령
+
+3. terraform import
+ 운영중인 리소스의 상태를 code로 가져오는 명령으로 ".tfstate"파일 자동 생성
+
+4. terraform destroy
+ 운영중인 인프라를 파괴하는 명령
+
+
+
+
+terraform.tfstate?
+ terraform apply이후 생성되는 파일
+ 현재 인프라의 상태를 의미하는 것은 아님, <내가 적용한 시점의 상태>
+ 원격 저장소인 'backend'에도 저장할 수 있음
+
+terraform Backend?
+ 사용하는 이유
+  1. Locking: 동시에 같은 state를 접근하는 것을 막아 의도치 않은 변경 방지
+  2. Backup: S3와 같은 원격저장소 사용함으로써 state파일 유실 방지
+
+
+
+terraform Variables
+    1. Variable Types
+     a. string
+     b. number
+     c. bool
+    2. 변수 정의는 variables.tf
+    3. 변수의 값 주입은 terraform.tfvars
